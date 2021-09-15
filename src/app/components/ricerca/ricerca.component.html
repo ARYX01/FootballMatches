@@ -1,1 +1,57 @@
-<p>ricerca works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4">
+      <div class="mb-3">
+        <label for="Input1" class="form-label">Find Matches Of Team</label>
+        <input
+          type="email"
+          class="form-control"
+          id="Input1"
+          placeholder="Team Name..."
+        />
+        <button class="btn btn-success mt-2">Find</button>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="mb-3">
+        <label for="Input2" class="form-label">Find Matches Of Leagues</label>
+        <input
+          type="email"
+          class="form-control"
+          id="Input2"
+          placeholder="Leagues Name..."
+        />
+        <button class="btn btn-success mt-2">Find</button>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="mb-3">
+        <label for="Input3" class="form-label">Find Matches Of One Date</label>
+        <input type="date" class="form-control" id="Input3" />
+        <button class="btn btn-success mt-2">Find</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--DIV FOR FIND BY ONE TEAM-->
+<div class="container mt-3" *ngIf="team != undefined">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Titolo</th>
+        <th scope="col">Competizione</th>
+        <th scope="col">Data</th>
+        <th scope="col">Guarda i video</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let partita of team">
+        <th scope="row">{{ partita.title }}</th>
+        <td>{{ partita.competition }}</td>
+        <td>{{ partita.date | date: "dd/MM/yyyy HH:mm" }}</td>
+        <td>@mdo</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

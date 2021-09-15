@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-partite',
   templateUrl: './partite.component.html',
-  styles: [
-  ]
+  styleUrls: ['./partite.component.css' ]
 })
 export class PartiteComponent implements OnInit {
 

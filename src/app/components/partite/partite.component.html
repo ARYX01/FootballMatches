@@ -1,21 +1,22 @@
-<img class="" style="filter:blur(5px)" src="https://calciorepublic.com/wp-content/uploads/2020/04/footb.jpg" alt="bg">
-<div class="container mt-3" *ngIf="partiteOggi!=undefined">
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">Titolo</th>
-      <th scope="col">Competizione</th>
-      <th scope="col">Data</th>
-      <th scope="col">Guarda i video</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let partita of partiteOggi">
-      <th scope="row">{{partita.title}}</th>
-      <td>{{partita.competition}}</td>
-      <td>{{partita.date | date: 'dd/MM/yyyy HH:mm' }}</td>
-      <td>@mdo</td>
-    </tr>
-    </tbody>
-  </table>
+<div class="div">
+  <div class="container mt-3" *ngIf="partiteOggi!=undefined">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Titolo</th>
+        <th scope="col">Competizione</th>
+        <th scope="col">Data</th>
+        <th scope="col">Guarda i video</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let partita of partiteOggi">
+        <th scope="row">{{partita.title}}</th>
+        <td>{{partita.competition}}</td>
+        <td>{{partita.date | date: 'dd/MM/yyyy HH:mm' }}</td>
+        <td>@mdo</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
