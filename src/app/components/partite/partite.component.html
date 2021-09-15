@@ -1,22 +1,39 @@
-<div class="div">
-  <div class="container mt-3" *ngIf="partiteOggi!=undefined">
-    <table class="table">
-      <thead>
-      <tr>
-        <th scope="col">Titolo</th>
-        <th scope="col">Competizione</th>
-        <th scope="col">Data</th>
-        <th scope="col">Guarda i video</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let partita of partiteOggi">
-        <th scope="row">{{partita.title}}</th>
-        <td>{{partita.competition}}</td>
-        <td>{{partita.date | date: 'dd/MM/yyyy HH:mm' }}</td>
-        <td>@mdo</td>
-      </tr>
-      </tbody>
-    </table>
+
+<div class="container mt-4" *ngIf="partiteOggi.length!=0">
+  <table class="table">
+    <thead class="table-success">
+    <tr>
+      <th scope="col">Titolo</th>
+      <th scope="col">Competizione</th>
+      <th scope="col">Data</th>
+      <th scope="col" class="text-center">Guarda i video</th>
+    </tr>
+    </thead>
+    <tbody class="bg-success text-light">
+    <tr *ngFor="let partita of partiteOggi">
+      <th scope="row">{{partita.title}}</th>
+      <td>{{partita.competition}}</td>
+      <td>{{partita.date | date: 'dd/MM/yyyy HH:mm' }}</td>
+      <td class="text-center"><button class="btn btn-outline-light" (click)="openVid(partita.title)">Video</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="modal fade" tabindex="-1" [class]="vidModal==true?'show':''" [style]="vidModal==true?'display:block':'display:none'">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Videos</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeVid()"></button>
+      </div>
+      <div class="modal-body" *ngIf="selectedMatch!=undefined">
+        <div *ngFor="let video of selectedMatch.video">
+          <h4>{{video.title}}</h4>
+          <div class="mb-2" [innerHTML]="video.embed | sanitizeHtml"> </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

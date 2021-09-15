@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import {ApiService} from "./components/api.service";
 import { PartiteComponent } from './components/partite/partite.component';
 import { RicercaComponent } from './components/ricerca/ricerca.component';
+import { SanitizeHtmlPipe } from './components/sanitizeHtml.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PartiteComponent,
-    RicercaComponent
+    RicercaComponent,
+    SanitizeHtmlPipe
   ],
   imports: [
     BrowserModule,
