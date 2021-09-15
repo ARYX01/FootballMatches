@@ -13,7 +13,7 @@
     <tr *ngFor="let partita of partiteOggi">
       <th scope="row">{{partita.title}}</th>
       <td>{{partita.competition}}</td>
-      <td>{{partita.date | date: 'dd/MM/yyyy' }}</td>
+      <td>{{partita.date | date: 'dd/MM/yyyy'}}</td>
       <td class="text-center"><button class="btn btn-outline-light" (click)="openVid(partita.title)">Video</button></td>
     </tr>
     </tbody>
