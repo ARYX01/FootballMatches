@@ -20,8 +20,8 @@ export class ApiService {
     let url=this.apiUrl+"/competizione/"+competizione
     return this.http.get<Response[]>(url)
   }
-  getData(data:Date){
-    let url=this.apiUrl+"/data/"+data
+  getData(data:string){
+    let url=this.apiUrl+"/date/"+data
     return this.http.get<Response[]>(url)
   }
 

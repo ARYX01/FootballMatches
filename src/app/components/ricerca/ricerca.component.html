@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col-4">
       <div class="mb-3">
-        <label for="Input1" class="shadow-lg text-light form-label">Find Matches By Team</label>
+        <label for="Input1" class="shadow-lg text-light form-label"
+          >Find Matches By Team</label
+        >
         <input
           type="email"
           class="form-control"
@@ -10,33 +12,47 @@
           placeholder="Team Name..."
           #team
         />
-        <button class="btn btn-success mt-2" (click)="findByTeam(team.value)">Find</button>
+        <button class="btn btn-success mt-2" (click)="findByTeam(team.value)">
+          Find
+        </button>
       </div>
     </div>
     <div class="col-4">
       <div class="mb-3">
-        <label for="Input2" class="shadow-lg text-light form-label">Find Matches By Leagues</label>
+        <label for="Input2" class="shadow-lg text-light form-label"
+          >Find Matches By Leagues</label
+        >
         <input
           type="email"
           class="form-control"
           id="Input2"
           placeholder="Leagues Name..."
+          #league
         />
-        <button class="btn btn-success mt-2">Find</button>
+        <button
+          class="btn btn-success mt-2"
+          (click)="findByLeague(league.value)"
+        >
+          Find
+        </button>
       </div>
     </div>
     <div class="col-4">
       <div class="mb-3">
-        <label for="Input3" class="shadow-lg text-light form-label">Find Matches By Date</label>
-        <input type="date" class="form-control" id="Input3" />
-        <button class="btn btn-success mt-2">Find</button>
+        <label for="Input3" class="shadow-lg text-light form-label"
+          >Find Matches By Date</label
+        >
+        <input type="date" class="form-control" id="Input3" #date/>
+        <button class="btn btn-success mt-2" (click)="findByDate(date.value)">
+          Find
+        </button>
       </div>
     </div>
   </div>
 </div>
 
 <!--DIV FOR FIND BY-->
-<div class="container mt-3" *ngIf="partite.length!=0">
+<div class="container mt-3" *ngIf="partite.length != 0">
   <table class="table">
     <thead class="table-success">
       <tr>
@@ -50,24 +66,41 @@
       <tr *ngFor="let partita of partite">
         <th scope="row">{{ partita.title }}</th>
         <td>{{ partita.competition }}</td>
-        <td>{{ partita.date | date: "dd/MM/yyyy HH:mm" }}</td>
-        <td class="text-center"><button class="btn btn-outline-light" (click)="openVid(partita.title)">Video</button></td>
+        <td>{{ partita.date | date: "dd/MM/yyyy" }}</td>
+        <td class="text-center">
+          <button
+            class="btn btn-outline-light"
+            (click)="openVid(partita.title)"
+          >
+            Video
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<div class="modal fade" tabindex="-1" [class]="vidModal==true?'show':''" [style]="vidModal==true?'display:block':'display:none'">
+<div
+  class="modal fade"
+  tabindex="-1"
+  [class]="vidModal == true ? 'show' : ''"
+  [style]="vidModal == true ? 'display:block' : 'display:none'"
+>
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Videos</h5>
-        <button type="button" class="btn-close" aria-label="Close" (click)="closeVid()"></button>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="closeVid()"
+        ></button>
       </div>
-      <div class="modal-body" *ngIf="selectedMatch!=undefined">
+      <div class="modal-body" *ngIf="selectedMatch != undefined">
         <div *ngFor="let video of selectedMatch.video">
-          <h4>{{video.title}}</h4>
-          <div class="mb-2" [innerHTML]="video.embed | sanitizeHtml"> </div>
+          <h4>{{ video.title }}</h4>
+          <div class="mb-2" [innerHTML]="video.embed | sanitizeHtml"></div>
         </div>
       </div>
     </div>

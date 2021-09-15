@@ -19,6 +19,17 @@ export class RicercaComponent {
     this.service.getSquadra(team).subscribe(res=>this.partite=res)
   }
 
+  findByLeague(league:string){
+    this.service.getCompetizione(league).subscribe(res=>this.partite=res)
+  }
+
+  findByDate(date:string){
+    console.log(date)
+    this.service.getData(date).subscribe(res=>this.partite=res)
+  }
+
+
+
 
   openVid(id:string){
     this.vidModal=true
