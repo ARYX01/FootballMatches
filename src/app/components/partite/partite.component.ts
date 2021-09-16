@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ApiService, Response} from "../api.service";
 
 @Component({
@@ -8,7 +8,9 @@ import {ApiService, Response} from "../api.service";
 })
 export class PartiteComponent implements OnInit {
 
-  partiteOggi:Response[]=[]
+  @Input() getall : boolean=true;
+
+  partite:Response[]=[]
 
   selectedMatch:Response|undefined
   vidModal:boolean=false
@@ -16,12 +18,17 @@ export class PartiteComponent implements OnInit {
   constructor(private service:ApiService) { }
 
   ngOnInit(): void {
-    this.service.getday().subscribe(res=>this.partiteOggi=res)
+    if(this.getall)
+      this.service.getAll().subscribe(res=>this.partite=res)
+  }
+
+  setPartite(partite:Response[]){
+    this.partite=partite
   }
 
   openVid(id:string){
     this.vidModal=true
-    this.selectedMatch = this.partiteOggi.find(el=>el.title==id)
+    this.selectedMatch = this.partite.find(el=>el.title==id)
   }
   closeVid(){
     this.vidModal=false

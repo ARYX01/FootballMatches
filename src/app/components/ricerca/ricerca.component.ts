@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import {ApiService, Response} from "../api.service";
+import {Component, ViewChild} from '@angular/core';
+import {ApiService} from "../api.service";
+import {PartiteComponent} from "../partite/partite.component";
 
 @Component({
   selector: 'app-ricerca',
@@ -8,33 +9,20 @@ import {ApiService, Response} from "../api.service";
 })
 export class RicercaComponent {
 
-  partite:Response[]=[]
-
-  selectedMatch:Response|undefined
-  vidModal:boolean=false
+  @ViewChild(PartiteComponent) child: PartiteComponent | undefined
 
   constructor(private service:ApiService) { }
 
   findByTeam(team:string){
-    this.service.getSquadra(team).subscribe(res=>this.partite=res)
+    this.service.getSquadra(team).subscribe(res=>this.child?.setPartite(res))
   }
 
   findByLeague(league:string){
-    this.service.getCompetizione(league).subscribe(res=>this.partite=res)
+    this.service.getCompetizione(league).subscribe(res=>this.child?.setPartite(res))
   }
 
   findByDate(date:string){
-    this.service.getData(date).subscribe(res=>this.partite=res)
-  }
-
-
-
-  openVid(id:string){
-    this.vidModal=true
-    this.selectedMatch = this.partite.find(el=>el.title==id)
-  }
-  closeVid(){
-    this.vidModal=false
+    this.service.getData(date).subscribe(res=>this.child?.setPartite(res))
   }
 
 }

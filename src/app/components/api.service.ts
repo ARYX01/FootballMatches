@@ -8,7 +8,7 @@ export class ApiService {
   apiUrl = "http://localhost:8080/api"
   constructor(private http:HttpClient) { }
 
-  getday(){
+  getAll(){
     let url=this.apiUrl+"/all"
     return this.http.get<Response[]>(url)
   }
