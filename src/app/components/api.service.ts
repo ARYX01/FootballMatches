@@ -25,6 +25,32 @@ export class ApiService {
     return this.http.get<Response[]>(url)
   }
 
+  getPredictions(){
+    let url=this.apiUrl+"/all/prediction/"
+    return this.http.get<Predictions[]>(url)
+  }
+
+}
+
+export interface Predictions{
+  home_team:string
+  away_team:string
+  id:number
+  competition_name:string
+  prediction:string
+  competition_cluster:string
+  status:string
+  start_date:string
+  odds:Odds
+}
+
+export interface Odds{
+  "1":number
+  "2":number
+  "12":number
+  "X":number
+  "1X":number
+  "X2":number
 }
 
 export interface Response{

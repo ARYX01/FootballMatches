@@ -18,8 +18,12 @@ export class PartiteComponent implements OnInit {
   constructor(private service:ApiService) { }
 
   ngOnInit(): void {
-    if(this.getall)
-      this.service.getAll().subscribe(res=>this.partite=res)
+    if(this.getall && this.partite.length==0) {
+      let today = new Date()
+      let date = today.getFullYear() + "-" + ('0'+(today.getMonth() + 1)).slice(-2) + "-" + ('0' +today.getDate()).slice(-2)
+      console.log(date) //test
+      this.service.getData(date).subscribe(res => this.partite = res)
+    }
   }
 
   setPartite(partite:Response[]){

@@ -7,6 +7,8 @@ import {ApiService} from "./components/api.service";
 import { PartiteComponent } from './components/partite/partite.component';
 import { RicercaComponent } from './components/ricerca/ricerca.component';
 import { SanitizeHtmlPipe } from './components/sanitizeHtml.pipe';
+import { BetsComponent } from './components/bets/bets.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -14,13 +16,15 @@ import { SanitizeHtmlPipe } from './components/sanitizeHtml.pipe';
     AppComponent,
     PartiteComponent,
     RicercaComponent,
-    SanitizeHtmlPipe
+    SanitizeHtmlPipe,
+    BetsComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        FormsModule
+    ],
   providers: [ApiService],
   bootstrap: [AppComponent]
 })

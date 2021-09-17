@@ -22,6 +22,7 @@ export class RicercaComponent {
   }
 
   findByDate(date:string){
+    console.log(date)
     this.service.getData(date).subscribe(res=>this.child?.setPartite(res))
   }
 

@@ -1,0 +1,33 @@
+
+<div class="container mt-4" *ngIf="betsFilter.length!=0">
+  <div class="row mb-3">
+    <div class="col">
+      <label class="shadow-lg bg-secondary text-light text-center form-control" for="team">Cerca per squadra</label>
+      <input id="team" type="text" class="form-control" [(ngModel)]="team" (ngModelChange)="cercaPerTeam()">
+    </div>
+    <div class="col">
+      <label class="shadow-lg bg-secondary text-light text-center form-control" for="comp">Cerca per competizione</label>
+      <input id="comp" type="text" class="form-control" [(ngModel)]="comp" (ngModelChange)="cercaPerComp()">
+    </div>
+  </div>
+  <table class="table">
+    <thead class="table-success">
+    <tr>
+      <th scope="col">Home team</th>
+      <th scope="col">Away team</th>
+      <th scope="col">Competizione</th>
+      <th scope="col">Data match</th>
+      <th scope="col">Quota favorita</th>
+    </tr>
+    </thead>
+    <tbody class="bg-success text-light">
+    <tr *ngFor="let bet of bets">
+      <td><b>{{bet.home_team}}</b> {{bet.odds["1"]}}</td>
+      <td><b>{{bet.away_team}}</b> {{bet.odds["2"]}}</td>
+      <td>{{bet.competition_name}}</td>
+      <td>{{bet.start_date | date: 'dd/MM/yyyy HH:mm'}}</td>
+      <td><b>{{bet.prediction}}</b> {{getPrediction(bet.prediction,bet.odds)}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
